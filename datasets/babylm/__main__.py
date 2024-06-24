@@ -1,5 +1,6 @@
 import argparse
 from .preprocess import Cleanups
+from . import download_from_osf
 
 
 def arg_parser():
@@ -23,6 +24,10 @@ def main():
         mode = "*test"
     else:
         raise ValueError("Invalid mode")
+
+    download_from_osf(
+        save_to="./text_data/", renew=False,
+    )
 
     cleanups = Cleanups(
         data_dir=args.dataset,
